@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <div id="clock" style="display: flex; font-size: xx-large;">
 
+<body>
+    <div id="main_win" style="padding: 25px;">
+        <div id="clock" style="display: flex; font-size: xx-large;">
+        </div>
     </div>
     <script>
 
-        const timeGetter= () => {
+        const timeGetter = () => {
             let myTime = new Date()
             let hours = myTime.getHours()
             let minutes = myTime.getMinutes()
             minutes = minutes < 10 ? "0" + minutes : minutes
             let seconds = myTime.getSeconds()
-            seconds = seconds < 10 ? "0" + seconds: seconds
+            seconds = seconds < 10 ? "0" + seconds : seconds
             clock.innerHTML = `
             <div style= "color: rgb(${((seconds * 20) & 250)}, ${((seconds * 40) & 250)}, ${((seconds * 60) & 250)})";>
                 ${hours}:
@@ -29,10 +32,17 @@
                 ${seconds}
                 </div>
             `
-        } 
+            if (hours < 16 && hours > 4) {
+                main_win.style.backgroundColor = 'CornflowerBlue'
+            }else{
+                main_win.style.backgroundColor = 'Cyan'
+            }
+        }
 
+        
         setInterval(timeGetter, 1000)
 
     </script>
 </body>
+
 </html>
