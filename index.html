@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="clock" style="display: flex; font-size: xx-large;">
+
+    </div>
+    <script>
+
+        const timeGetter= () => {
+            let myTime = new Date()
+            let hours = myTime.getHours()
+            let minutes = myTime.getMinutes()
+            minutes = minutes < 10 ? "0" + minutes : minutes
+            let seconds = myTime.getSeconds()
+            seconds = seconds < 10 ? "0" + seconds: seconds
+            clock.innerHTML = `
+            <div style= "color: rgb(${((seconds * 20) & 250)}, ${((seconds * 40) & 250)}, ${((seconds * 60) & 250)})";>
+                ${hours}:
+                </div>
+            <div style= "color: rgb(${((seconds * 60) & 250)}, ${((seconds * 20) & 250)}, ${((seconds * 40) & 250)})";>
+                ${minutes}:
+                </div>
+            <div style= "color: rgb(${((seconds * 40) & 250)}, ${((seconds * 60) & 250)}, ${((seconds * 20) & 250)})";>
+                ${seconds}
+                </div>
+            `
+        } 
+
+        setInterval(timeGetter, 1000)
+
+    </script>
+</body>
+</html>
